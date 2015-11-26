@@ -1,0 +1,103 @@
+div.login{
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  background: rgba(88,88,88,0.4);
+  border-radius: 3px;
+  @include box-shadow(0 0 200px rgba(white, .5), 0 1px 2px rgba(black, .3));
+/*
+  text-align: center;
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  background-color: rgba(88,88,88,0.4);
+  */
+}
+
+.container{
+  margin: 200px auto;
+  width: 640px;
+}
+
+h2{
+  margin: -20px -20px 21px;
+  line-height: 40px;
+  font-size: 20px;
+  font-family: "Arial Black";
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background: rgba(93,93,93,0.4);
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+}
+
+body{
+  margin: 0px;
+  padding: 0px;
+  width:100%;
+  background: url("http://pre00.deviantart.net/ebd2/th/pre/f/2008/290/e/2/nhl_wallpaper_by_sim25_design.jpg");
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+}
+h1 {
+  color: white;
+  font-size: 60px;
+  margin: 50px auto 0 auto;
+  font-family: "Arial Black";
+  font-weight: thin;
+  text-shadow:  -1px -1px Black,
+                1px -1px Black,
+                -1px 1px Black,
+                1px 1px Black;
+  background-color: rgba(88,88,88,0.4);
+  width:55%;
+  border: 3px solid grey;
+  margin-bottom: 50px;
+
+
+}
+p {
+  margin: 20px 0 20px 0;
+  color: white;
+  text-shadow:  -1px -1px Black,
+                1px -1px Black,
+                -1px 1px Black,
+                1px 1px Black;
+}
+input {
+  border: 0;
+  padding: 10px;
+  font-size: 18px;
+}
+input[type="submit"]{
+  background: red;
+  color: white;
+}
+select {
+
+}
+ul {
+  margin: 0;
+  text-align: right;
+  padding: 5px 5px;
+  background: black;
+}
+li {
+  color: white;
+  display: inline;
+  padding-right: 10px;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+href {
+  color: white;
+}
+a:hover {
+  color:grey;
+  text-decoration: underline;
+}
