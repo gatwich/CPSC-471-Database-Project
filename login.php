@@ -1,3 +1,8 @@
+
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +28,66 @@
           <li><a href="recent.php">Recent</a></li>
         </ul>
       </div>
-
+		<?php
+		$form = "<form action='./login.php' method='post'>
+		<table>
+		<tr>
+				<td>Username:</td>
+				<td><input type = 'text' name = 'username' /></td>
+		</tr>
+		<tr>
+				<td>Password:</td>
+				<td><input type = 'password' name = 'password' /></td>
+		</tr>
+		<tr>
+				<td></td>
+				<td><input type='submit' name='loginbtn' value='Login' /> </td>
+		</tr>
+		</table>
+		</form>";
+		
+		if($_POST['loginbtn']){
+			
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			if($username){
+				if($password){
+					require("db_connect.php");
+					
+					//query database
+					$query = mysqli_query($mysqli, "SELECT * FROM users WHERE Username='$username'");
+					$numrows = mysqli_num_rows($query);
+					if($numrows == 1){
+						$row = mysqli_fetch_assoc($query);
+						$dbuser = $row['Username'];
+						$dbpass = $row['Password'];
+						
+						if($password == $dbpass){
+							//set session variables
+							$_SESSION['username'] = dbuser;
+							echo "You have been logged in as <b>$dbuser</b>.";
+							
+						}
+						else
+								echo "You did not enter the correct password.";
+					}
+					else 
+						echo "username not found";
+					
+					mysqli_close($mysqli);
+				}
+				else	
+					echo "You must enter password. $form";
+					
+			}
+			else 
+				echo "You must enter username. $form";
+			
+		}
+		else{
+				echo $form;
+		}
+		?>
     <div class="content">
       <div class="login">
         <p>Database login</p>
@@ -32,7 +96,7 @@
           <input type="password" placeholder="password">
         </div>
       </div>
-  </div>
+  </div> 
 
   </body>
 </html>
