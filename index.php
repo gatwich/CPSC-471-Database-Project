@@ -7,24 +7,37 @@
   </head>
 
   <body>
-    <span>
-    <ul>
-      <li><a href="login.php">Login</a></li>
-      <li><a href="signup.php">Sign up</a></li>
-    </ul>
-    </span>
-        <h1>THE NHL DATABASE</h1>
-    <p> Here at THE NHL DATABASE you can search for any coach, player, arena you wish.  Start now! </p>
-    <input type="search" placeholder="Search">
-    <input type="submit">    <!--
-    <div>
-    //  <select>
-    //    <option value="Players">Kane</option>
-    //    <option value="Sedin">Sedin</option>
-    //    <option value="Crosby">Crosby</option>
-    //    <option value="Ovy">Ovy</option>
-    //  </select>
-    </div>
-    -->
-    </body>
+      <div class="header">
+        <ul>
+          <li><a href="login.php">Login</a></li>
+          <li><a href="signup.php">Sign up</a></li>
+        </ul>
+      </div>
+
+      <div class="navigation">
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="favorites.php">Favorites</a></li>
+          <li>
+            <a href="recent.php">Recent</a></li>
+        </ul>
+      </div>
+
+      <h1>THE NHL DATABASE</h1>
+
+      <div class="content">
+        <p> SEARCH </p>
+        <ul>
+            <li>Team</li>
+            <li>Location</li>
+            <li>Division</li>
+            <li>Conference</li>
+            <li>Coach</li>
+            <li>Arena</li>
+        </ul>
+
+        <input type="search" placeholder="Search">
+        <input type="submit">
+      </div>
+   </body>
 </html>
