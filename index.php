@@ -26,18 +26,21 @@
       <h1>THE NHL DATABASE</h1>
 
       <div class="content">
-        <p> SEARCH </p>
-        <ul>
+        <div class="search">
+          <p> SEARCH </p>
+          <ul>
             <li>Team</li>
             <li>Location</li>
             <li>Division</li>
             <li>Conference</li>
             <li>Coach</li>
             <li>Arena</li>
-        </ul>
+          </ul>
 
-        <input type="search" placeholder="Search">
-        <input type="submit">
+          <input type="search" placeholder="Search">
+          <input type="submit">
+
+        </div>
       </div>
    </body>
 </html>
