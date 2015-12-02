@@ -1,3 +1,5 @@
+/*Index waiting on php*/
+
 <!DOCTYPE html>
 <html>
 
