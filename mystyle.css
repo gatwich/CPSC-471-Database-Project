@@ -121,7 +121,6 @@ ul.checkbox li {
   display:inline-block;
   width:160px;
 }
-
 .content input[type="search"], .content input[type="submit"] {
 	font-family: "Times New Roman"
 	font-weight: thin;
@@ -130,14 +129,22 @@ ul.checkbox li {
   font-size: 18px;
 	margin-bottom: 20px;
 }
-.content .login .fields input{
-	margin: 0 0 10px 0;
+.content input[type="text"], .content input[type="password"], .content input[type="cpassword"] {
+	margin: 10px 0;
+  padding: 10px 0;
 }
-
+.content .login .fields {
+	text-align: center;
+	font-size: 30px;
+}
+.subcontainer {
+ /*empty div for .login submit display:block*/
+}
 .content input[type="submit"]{
   background: black;
   color: white;
 }
+
 .content input[type="submit"]:hover {
 	background: red;
 }
