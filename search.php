@@ -16,14 +16,12 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 echo "<br>";
 		 echo "<br>";
 		 //connect  to the database
-		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
-		//-select  the database to use
-		$mydb=mysql_select_db("nhl");
+		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
 		$arena="SELECT  Name, Capacity, Location FROM arena WHERE Name='" . $name ."'";
 		//-run  the query against the mysql query function
-		$result=mysql_query($arena);
-		while($row=mysql_fetch_array($result)){
+		$result=mysqli_query($db, $arena);
+		while($row=mysqli_fetch_array($result)){
 			    $Name  =$row['Name'];
 			    $Capacity=$row['Capacity'];
 			    $Location=$row['Location'];
@@ -49,14 +47,12 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 echo "<br>";
 		 echo "<br>";
 		 //connect  to the database
-		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
-		//-select  the database to use
-		$mydb=mysql_select_db("nhl");
+		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
 		$conference="SELECT Name FROM team WHERE Division = SELECT Name FROM division WHERE Conference ='" . $name ."'";
 		//-run  the query against the mysql query function
-		$result=mysql_query($conference);
-		while($row=mysql_fetch_array($result)){
+		$result=mysqli_query($db, $conference);
+		while($row=mysqli_fetch_array($result)){
 			    $Name  =$row['Name'];
 		//-display  the result of the array
 		echo  "<ul>\n";
@@ -78,15 +74,13 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 echo "<br>";
 		 echo "<br>";
 		 //connect  to the database
-		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
-		//-select  the database to use
-		$mydb=mysql_select_db("nhl");
+		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
 		$division="SELECT Name FROM team WHERE Division = '" . $name ."'";
 		
 		//-run  the query against the mysql query function
-		$result=mysql_query($division);
-		while($row=mysql_fetch_array($result)){
+		$result=mysqli_query($db, $division);
+		while($row=mysqli_fetch_array($result)){
 			    $Name  =$row['Name'];
 		//-display  the result of the array
 		echo  "<ul>\n";
