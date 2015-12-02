@@ -132,6 +132,7 @@ ul.checkbox li {
 .content input[type="text"], .content input[type="password"], .content input[type="cpassword"] {
 	margin: 10px 0;
   padding: 10px 0;
+	font-size: 18px;
 }
 .content .login .fields {
 	text-align: center;
