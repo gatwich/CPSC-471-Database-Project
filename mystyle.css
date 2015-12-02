@@ -80,7 +80,7 @@ h1 {
 	color: white;
 	font-size: 35px;
 }
-.content .login{
+.content .login {
 	margin: 70px 0px;
 	margin-left:auto;
 	margin-right:auto;
@@ -90,54 +90,51 @@ h1 {
 				 			0 0 20px white, 0 0 30px white,
 				 			0 0 40px white;
 }
-.content .search{
+.content .search {
 	margin-left:auto;
 	margin-right:auto;
-	width: 300px;
+	width: 400px;
   background: linear-gradient(135deg, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#595959 100%,#666666 100%,#474747 100%,#000000 100%,#2c2c2c 100%,#4c4c4c 100%);
 	box-shadow: 0 0 5px white, 0 0 10px white,
 				 			0 0 20px white, 0 0 30px white,
 				 			0 0 40px white;
+	text-align: center;
 }
-.content .search ul{
-  color: white;
-	font-size: 30px;
-}
-.content .search li{
-	list-style-type: none;
-	display: inline;
-	float:left;
-}
-
-.content li:nth-child(even){
-    float:right;
-		margin-right: 5px;
-}
-
-.content p{
+.content p {
 	padding: 10px 0px;
   text-align: center;
 	border-bottom: 1px solid grey;
 }
-.content .login p{
-	margin-bottom: 10px;
+
+ul.checkbox {
+	text-align: left;
+  color: white;
+	font-size: 30px;
+	margin: 0;
+  padding-top: 10px;
+	padding-bottom:20px;
+  margin-left: 20px;
+  list-style: none;
+}
+ul.checkbox li {
+	margin-left: 20px;
+  display:inline-block;
+  width:160px;
 }
 
-.content input {
+.content input[type="search"], .content input[type="submit"] {
 	font-family: "Times New Roman"
 	font-weight: thin;
-	margin:0;
   border: 0;
   padding: 10px;
   font-size: 18px;
+	margin-bottom: 20px;
 }
 .content .login .fields input{
 	margin: 0 0 10px 0;
 }
 
 .content input[type="submit"]{
-	font-family: "Times New Roman"
-	font-weight: thin;
   background: black;
   color: white;
 }
