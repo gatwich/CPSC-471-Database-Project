@@ -31,7 +31,7 @@ fieldset { padding:0px; }
 .navigation{
 	text-align: left;
 }
-.header a, .navigation a {
+.header a, .navigation a, .header p {
 	text-decoration: none;
 	color: white;
 }

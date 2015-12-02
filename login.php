@@ -2,6 +2,8 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 session_start();
+$username = $_SESSION['username'];
+echo $username;
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,13 +15,32 @@ session_start();
 
   <body>
     <div id="container">
-
-      <div class="header">
+<?php
+	
+	if(empty($_SESSION['username'])){
+		$header = "<div class='header'>
+							<ul>
+								<li><a href='login.php'>Login</a></li>
+								<li><a href='signup.php'>Sign up</a></li>
+							</ul>
+						</div>";
+	}
+	else{
+			$header = "<div class='header'>
+							
+							<ul>
+								<li><p>Hello, $username </p></li>
+							</ul>
+						</div>";
+	}
+	echo $header
+?>
+      <!-- <div class="header">
         <ul>
           <li><a href="login.php">Login</a></li>
           <li><a href="signup.php">Sign up</a></li>
         </ul>
-      </div>
+      </div> -->
 
       <div class="navigation">
         <ul>
@@ -62,8 +83,8 @@ session_start();
 
 						if($password == $dbpass){
 							//set session variables
-							$_SESSION['username'] = dbuser;
-							echo "You have been logged in as <b>$dbuser</b>.";
+							$_SESSION['username'] = $dbuser;
+							echo "You have been logged in as <b>$dbuser</b>. $form";
 
 						}
 						else
