@@ -1,163 +1,89 @@
-* {
-	padding:0;
-	margin:0;
-}
-h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, label, ul, ol, dl, fieldset, address { margin:0px 0; }
-li, dd, blockquote { margin-left: 0px;}
-fieldset { padding:0px; }
 
-#container {
-  width:100%;
-}
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+?>
+<!DOCTYPE html>
+<html>
 
-.header, .navigation {
-	font-family: "Times New Roman";
-	font-size: 20px;
-	width: 100%;
-	list-style-type: none;
-}
-.header li {
-  display: inline;
-	padding: 8px 10px;
-}
-.navigation li{
-	display: inline;
-	padding: 15px 30px;
-	border:1px solid transparent;
-}
-.header {
-  text-align: right;
-}
-.navigation{
-	text-align: left;
-}
-.header a, .navigation a {
-	text-decoration: none;
-	color: white;
-}
-.header ul {
-	background-color: black;
-	padding: 10px;
-}
-.navigation ul {
-	background: linear-gradient(135deg, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#595959 100%,#666666 100%,#474747 100%,#000000 100%,#2c2c2c 100%,#4c4c4c 100%);
-	padding: 20px 0px;
-	padding-left: 100px;
-}
+  <head>
+    <title>NHL Database</title>
+		<link rel="stylesheet" type="text/css" href="mystyle.css">
+  </head>
 
-.header a:hover {
-  text-decoration: underline;
-	color: rgba(95,95,95,1);
-}
-.navigation li:hover {
-  border-left: 1px solid rgba(88,88,88,0.4);
-	border-right: 1px solid rgba(88,88,88,0.4);
-}
+  <body>
+    <div id="container">
 
-body {
-  /*background: url("http://pre00.deviantart.net/ebd2/th/pre/f/2008/290/e/2/nhl_wallpaper_by_sim25_design.jpg");*/
-	background-size: cover;
-  background-position: top;
-}
+      <div class="header">
+        <ul>
+          <li><a href="login.php">Login</a></li>
+          <li><a href="signup.php">Sign up</a></li>
+        </ul>
+      </div>
 
-h1 {
-	margin: 40px 0px;
-	text-align: center;
-	font-size: 100px;
-  color: black;
-	text-shadow: 0 0 5px white, 0 0 10px white,
-				 0 0 20px white, 0 0 30px white,
-				 0 0 40px white;
-	font-family: "Times New Roman"
-  font-weight: thin;
-}
+      <div class="navigation">
+        <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="favorites.php">Favorites</a></li>
+          <li><a href="recent.php">Recent</a></li>
+        </ul>
+      </div>
+		<?php
+		$form = "<form action='./login.php' method='post'>
+    <div class='content'>
+      <div class='login'>
+        <p>Database login</p>
+        <div class='fields'>
+          <input type='text' placeholder='username' name = 'username'>
+          <input type='password' placeholder='password' name = 'password'>
+          <input type='submit' name='loginbtn' value='Login'>
+        </div>
+      </div>
+    </div>
+		</form>";
 
-.content, p {
-	color: white;
-	font-size: 40px;
-	margin: 0;
-}
+		if($_POST['loginbtn']){
 
-.content {
-	text-align: center;
-	font-size: 35px;
-	font-family: "Times New Roman"
-	font-weight: thin;
-	padding-bottom: 5px;
-}
-.content .login{
-	margin: 70px 0px;
-	margin-left:auto;
-	margin-right:auto;
-	width: 300px;
-  background: linear-gradient(135deg, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#595959 100%,#666666 100%,#474747 100%,#000000 100%,#2c2c2c 100%,#4c4c4c 100%);
-	box-shadow: 0 0 5px white, 0 0 10px white,
-				 			0 0 20px white, 0 0 30px white,
-				 			0 0 40px white;
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			if($username){
+				if($password){
+					require("db_connect.php");
 
-}
-.content .search{
-	margin: 70px 0px;
-	margin-left:auto;
-	margin-right:auto;
-	width: 400px;
-  background: linear-gradient(135deg, #131313 0%,#1c1c1c 9%,#2b2b2b 24%,#111111 40%,#595959 100%,#666666 100%,#474747 100%,#000000 100%,#2c2c2c 100%,#4c4c4c 100%);
-	box-shadow: 0 0 5px white, 0 0 10px white,
-				 			0 0 20px white, 0 0 30px white,
-				 			0 0 40px white;
-}
+					//query database
+					$query = mysqli_query($mysqli, "SELECT * FROM users WHERE Username='$username'");
+					$numrows = mysqli_num_rows($query);
+					if($numrows == 1){
+						$row = mysqli_fetch_assoc($query);
+						$dbuser = $row['Username'];
+						$dbpass = $row['Password'];
 
-.content p{
-	padding: 10px 0px;
-  text-align: center;
-  margin-bottom: 20px;
-	border-bottom: 1px solid grey;
-}
-.content .login p{
-	margin-bottom: 10px;
-}
+						if($password == $dbpass){
+							//set session variables
+							$_SESSION['username'] = dbuser;
+							echo "You have been logged in as <b>$dbuser</b>.";
 
-.content ul{
-	margin-left: auto;
-	margin-right: auto;
-  width:440px;
-}
-.content li{
-	padding: 5px 0px;
-	list-style-type: none;
-  float:left;
-  width:200px;
-}
+						}
+						else
+								echo "You did not enter the correct password.";
+					}
+					else
+						echo "username not found";
 
-.content input {
-	font-family: "Times New Roman"
-	font-weight: thin;
-	margin:0;
-  border: 0;
-  padding: 10px;
-  font-size: 18px;
-	margin: 30px 0px;
-}
-.content .login .fields input{
-	margin: 0 0 10px 0;
-}
+					mysqli_close($mysqli);
+				}
+				else
+					echo "You must enter password. $form";
 
-.content input[type="submit"]{
-	font-family: "Times New Roman"
-	font-weight: thin;
-  background: black;
-  color: white;
-}
-.content input[type="submit"]:hover {
-	background: red;
-}
+			}
+			else
+				echo "You must enter username. $form";
 
-.content ul {
-	width: 400px;
-}
-.content li {
-	float: left;
-}
-.content li:nth-child(even){
-    margin-right:0;
-}
+		}
+		else{
+				echo $form;
+		}
+		?>
+
+  </body>
+</html>
