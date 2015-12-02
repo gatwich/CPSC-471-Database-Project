@@ -76,15 +76,22 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$division="SELECT Name FROM team WHERE Division = '" . $name ."'";
+		$division="SELECT Name, Location, Arena, 'Games Played', Wins, Losses, points FROM team WHERE Division = '" . $name ."'";
 		
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $division);
+		echo $name . " Division";
 		while($row=mysqli_fetch_array($result)){
 			    $Name  =$row['Name'];
+			    $Location=$row['Location'];
+			    $Arena=$row['Arena'];
+			    $GP=$row['Games Played'];
+			    $Wins=$row['Wins'];
+			    $Losses=$row['Losses'];
+			    $points=$row['points'];
 		//-display  the result of the array
 		echo  "<ul>\n";
-		echo  "<li>" . "<a  href=\"$Name".".php\">"   .$Name .  "</a></li>\n";
+		echo "Name = " . $Name . " Location = " . $Location . " Arena = "   .$Arena . " Games Played = "   .$GP . " Wins = "   .$Wins . " Losses = "   .$Losses . " Points = "   .$points;
 		echo  "</ul>";
 		
 		}
