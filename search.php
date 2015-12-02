@@ -14,21 +14,26 @@ if (isset($_POST['submit'])) { //user text is submitted
 	  	 $name = $_POST['input']; 
 		 echo $name;
 		 echo "<br>";
+		 echo "<br>";
 		 //connect  to the database
 		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-select  the database to use
 		$mydb=mysql_select_db("nhl");
 		//-query  the database table
-		$sql="SELECT  Name, Capacity, Location FROM arena WHERE Name='" . $name ."'";
+		$arena="SELECT  Name, Capacity, Location FROM arena WHERE Name='" . $name ."'";
 		//-run  the query against the mysql query function
-		$result=mysql_query($sql);
+		$result=mysql_query($arena);
 		while($row=mysql_fetch_array($result)){
 			    $Name  =$row['Name'];
 			    $Capacity=$row['Capacity'];
 			    $Location=$row['Location'];
 		//-display  the result of the array
 		echo  "<ul>\n";
-		echo  "<li>" . "<a  href=\"$Name".".php\">"   .$Location ." ".$Name . " " . $Capacity .  "</a></li>\n";
+		echo  "<li>" . "<a  href=\"$Name".".php\">".$Name."</a></li>\n";
+		echo "<br>";
+		echo "Capacity = " . $Capacity;
+		echo "<br>";
+		echo "Location = "   .$Location;
 		echo  "</ul>";
 		}
 		//}
@@ -41,6 +46,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){ 
 	  	 $name = $_POST['input']; 
 		 echo $name;
+		 echo "<br>";
 		 echo "<br>";
 		 //connect  to the database
 		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
@@ -69,6 +75,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){ 
 	  	 $name = $_POST['input']; 
 		 echo $name;
+		 echo "<br>";
 		 echo "<br>";
 		 //connect  to the database
 		$db=mysql_connect  ("localhost", "root",  "admin") or die ('I cannot connect to the database  because: ' . mysql_error());
