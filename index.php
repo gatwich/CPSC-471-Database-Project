@@ -28,14 +28,14 @@
       <div class="content">
         <div class="search">
           <p> SEARCH </p>
-          <ul>
+          <ul class="checkbox">
             <li><input type="checkbox" name="arenaCheck" value="yes"> Arena</li>
             <li><input type="checkbox" name="coachCheck" value="yes"> Coach</li>
             <li><input type="checkbox" name="conferenceCheck" value="yes"> Conference</li>
             <li><input type="checkbox" name="divisionCheck" value="yes"> Division</li>
             <li><input type="checkbox" name="locationCheck" value="yes"> Location</li>
-	    <li><input type="checkbox" name="playersCheck" value="yes"> Players</li>
-	    <li><input type="checkbox" name="teamCheck" value="yes"> Team</li>
+	          <li><input type="checkbox" name="playersCheck" value="yes"> Players</li>
+	          <li><input type="checkbox" name="teamCheck" value="yes"> Team</li>
           </ul>
 
           <input type="search" placeholder="Search">
