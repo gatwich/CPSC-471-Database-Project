@@ -24,16 +24,19 @@
         </ul>
       </div>
 
-    <div class="content">
-      <div class="login">
-        <p>Sign up!</p>
-        <div class="fields">
-          <input type="username" placeholder="username">
-          <input type="password" placeholder="password">
-          <input type="password" placeholder="confirm password">
+      <div class='content'>
+        <div class='login'>
+          <p>Sign up!</p>
+          <div class='fields'>
+            <input type='text' placeholder='username' name = 'username'>
+            <input type='password' placeholder='password' name = 'password'>
+            <input type='cpassword' placeholder='Confirm Password' name = 'cpassword'>
+            <div class='subcontainer'>
+              <input type='submit' name='signinbtn' value='submit'>
+            </div>
+          </div>
         </div>
       </div>
-  </div>
 
   </body>
 </html>
