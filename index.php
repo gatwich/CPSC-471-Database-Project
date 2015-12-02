@@ -52,6 +52,7 @@ $username = $_SESSION['username'];
 
       <h1>THE NHL DATABASE</h1>
 
+      <form method="post" action="search.php">
       <div class="content">
         <div class="search">
           <p> SEARCH </p>
@@ -64,11 +65,10 @@ $username = $_SESSION['username'];
 	          <li><input type="checkbox" name="playersCheck" value="yes"> Players</li>
 	          <li><input type="checkbox" name="teamCheck" value="yes"> Team</li>
           </ul>
-
-          <input type="search" placeholder="Search">
-          <input type="submit">
-
+          <input type="search" placeholder="Search" name="input">
+          <input type="submit" name="submit" value="search">
         </div>
       </div>
+      </form>
    </body>
 </html>
