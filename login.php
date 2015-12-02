@@ -36,7 +36,9 @@ session_start();
         <div class='fields'>
           <input type='text' placeholder='username' name = 'username'>
           <input type='password' placeholder='password' name = 'password'>
-          <input type='submit' name='loginbtn' value='Login'>
+          <div class='subcontainer'>
+            <input type='submit' name='loginbtn' value='Login'>
+          </div>
         </div>
       </div>
     </div>
