@@ -1,8 +1,3 @@
-
-<?php
-error_reporting(E_ALL ^ E_NOTICE);
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -12,8 +7,6 @@ session_start();
   </head>
 
   <body>
-    <div id="container">
-
       <div class="header">
         <ul>
           <li><a href="login.php">Login</a></li>
@@ -25,65 +18,30 @@ session_start();
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="favorites.php">Favorites</a></li>
-          <li><a href="recent.php">Recent</a></li>
+          <li>
+            <a href="recent.php">Recent</a></li>
         </ul>
       </div>
-		<?php
-		$form = "<form action='./login.php' method='post'>
-    <div class='content'>
-      <div class='login'>
-        <p>Database login</p>
-        <div class='fields'>
-          <input type='text' placeholder='username' name = 'username'>
-          <input type='password' placeholder='password' name = 'password'>
-          <input type='submit' name='loginbtn' value='Login'>
+
+      <h1>THE NHL DATABASE</h1>
+
+      <div class="content">
+        <div class="search">
+          <p> SEARCH </p>
+          <ul>
+            <li><input type="checkbox" name="arenaCheck" value="yes"> Arena</li>
+            <li><input type="checkbox" name="coachCheck" value="yes"> Coach</li>
+            <li><input type="checkbox" name="conferenceCheck" value="yes"> Conference</li>
+            <li><input type="checkbox" name="divisionCheck" value="yes"> Division</li>
+            <li><input type="checkbox" name="locationCheck" value="yes"> Location</li>
+	    <li><input type="checkbox" name="playersCheck" value="yes"> Players</li>
+	    <li><input type="checkbox" name="teamCheck" value="yes"> Team</li>
+          </ul>
+
+          <input type="search" placeholder="Search">
+          <input type="submit">
+
         </div>
       </div>
-    </div>
-		</form>";
-
-		if($_POST['loginbtn']){
-
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			if($username){
-				if($password){
-					require("db_connect.php");
-
-					//query database
-					$query = mysqli_query($mysqli, "SELECT * FROM users WHERE Username='$username'");
-					$numrows = mysqli_num_rows($query);
-					if($numrows == 1){
-						$row = mysqli_fetch_assoc($query);
-						$dbuser = $row['Username'];
-						$dbpass = $row['Password'];
-
-						if($password == $dbpass){
-							//set session variables
-							$_SESSION['username'] = dbuser;
-							echo "You have been logged in as <b>$dbuser</b>.";
-
-						}
-						else
-								echo "You did not enter the correct password.";
-					}
-					else
-						echo "username not found";
-
-					mysqli_close($mysqli);
-				}
-				else
-					echo "You must enter password. $form";
-
-			}
-			else
-				echo "You must enter username. $form";
-
-		}
-		else{
-				echo $form;
-		}
-		?>
-
-  </body>
+   </body>
 </html>
