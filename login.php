@@ -42,7 +42,7 @@ session_start();
         </div>
       </div>
     </div>
-		</form>";
+		</form>"; /* */
 
 		if($_POST['loginbtn']){
 
