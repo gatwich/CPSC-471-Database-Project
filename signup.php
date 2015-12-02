@@ -1,3 +1,5 @@
+/* style finished - awaiting php */
+
 <!DOCTYPE html>
 <html>
 
