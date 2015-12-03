@@ -50,13 +50,13 @@ if (isset($_POST['submit'])) { //user text is submitted
 
     	// if *************conference*********** is selected
 	if(isset($_POST['conferenceCheck'])){
-		echo "conferencecheck";
-		echo "<br>";
+		//echo "conferencecheck";
+		//echo "<br>";
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){
 	  	 $name = $_POST['input'];
-		 echo $name;
-		 echo "<br>";
-		 echo "<br>";
+		// echo $name;
+		// echo "<br>";
+		// echo "<br>";
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
@@ -83,13 +83,13 @@ if (isset($_POST['submit'])) { //user text is submitted
 
 	//if **************division************** is selected
 	else if(isset($_POST['divisionCheck'])) {
-		echo "divisioncheck";
-		echo "<br>";
+		//echo "divisioncheck";
+		//echo "<br>";
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){
 	  	 $name = $_POST['input'];
-		 echo $name;
-		 echo "<br>";
-		 echo "<br>";
+		// echo $name;
+		// echo "<br>";
+		// echo "<br>";
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
@@ -112,12 +112,12 @@ if (isset($_POST['submit'])) { //user text is submitted
 	//if players is selected
 	else if(isset($_POST['playersCheck'])){ 
 		//echo "<strong>acheck</strong>";
-		echo "<br>";
+		//echo "<br>";
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){ 
 	 	$name = $_POST['input']; 
-		echo "<strong>$name</strong>";
-		echo "<br>";
-		echo "<br>";
+		//echo "<strong>$name</strong>";
+		//echo "<br>";
+		//echo "<br>";
 		//connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
@@ -161,13 +161,13 @@ if (isset($_POST['submit'])) { //user text is submitted
 
 		//if Location is selected
 	else if(isset($_POST['locationCheck'])){
-		echo "<strong>locationcheck</strong>";
-		echo "<br>";
+		//echo "<strong>locationcheck</strong>";
+		//echo "<br>";
 		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){
 		  $name = $_POST['input'];
-		echo "<strong>$name</strong>";
-		echo "<br>";
-		echo "<br>";
+		//echo "<strong>$name</strong>";
+		//echo "<br>";
+		//echo "<br>";
 		//connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
@@ -202,22 +202,46 @@ if (isset($_POST['submit'])) { //user text is submitted
 	// if the teams is selected
 
 	else if(isset($_POST['teamCheck'])){
-		echo "arenacheck";
-		echo "<br>";
+		//echo "arenacheck";
+		//echo "<br>";
 		$name = $_POST['input'];
-		echo $name;
+		//echo "<strong>Team</strong>";
 		//we connect to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		$teams_query="SELECT  Name, Wins, Losses, points, `Games Played`, Location, Division FROM team WHERE `Name`='" . $name ."'";
+		$Coach="SELECT  Name FROM coach WHERE Team='" . $name ."'";
+		$teamplayers="SELECT `First Name`, `Last Name`, Points, Goals FROM players  WHERE Team = '" . $name ."'";
 		$result=mysqli_query($db, $teams_query);
+		$result2=mysqli_query($db, $Coach);
+		$result3=mysqli_query($db, $teamplayers);
 		echo "<table><tr><th>Name</th><th>Wins</th><th>Losses</th><th>Points</th><th>Games Played</th><th>Location</th><th>Division</th></tr>";
 
 		while($row=mysqli_fetch_array($result)){
 		echo "<tr><td>" . $row["Name"]. "</td><td>" . $row["Wins"]."</td><td>" . $row["Losses"]. "</td><td>" . $row["points"]. "</td><td>" . $row["Games Played"]. "</td><td>" . $row["Location"]. "</td><td>" . $row["Division"]. "</td></tr>";
 		}
 		echo "</table>";
-		}
+		echo "<br>";
 
+
+		//display Coach
+		echo "<strong>Coach</strong>";
+		echo "<table><tr><th>Coach Name</th></tr>";
+
+		while($row=mysqli_fetch_array($result2)){
+		echo "<tr><td>" . $row["Name"]. "</td></tr>";
+		}
+		echo "</table>";
+		echo "<br>";
+
+		//display players
+		echo "<strong>Players</strong>";
+		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Points</th><th>Goals</th></tr>";
+
+		while($row=mysqli_fetch_array($result3)){
+		echo "<tr><td>" . $row["First Name"]. "</td><td>" . $row["Last Name"]."</td><td>" . $row["Points"]. "</td><td>" . $row["Goals"]. "</td></tr>";
+		}
+		echo "</table>";
+		}
 	else{
 
 		}
