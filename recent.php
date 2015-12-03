@@ -17,7 +17,7 @@ $username = $_SESSION['username'];
     <div id="container">
 
 	<?php
-	
+
 	if(empty($_SESSION['username'])){
 		$header = "<div class='header'>
 							<ul>
@@ -27,12 +27,14 @@ $username = $_SESSION['username'];
 						</div>";
 	}
 	else{
-			$header = "<div class='header'>
-							
-							<ul>
-								<li><p>Hello, $username </p></li>
-							</ul>
-						</div>";
+    $header = "<div class='newHeader'>
+            <ul>
+              <li>
+                <p>You are logged in as</p>
+                <p class='username'> $username</p>
+              </li>
+            </ul>
+          </div>";
 	}
 	echo $header
 ?>
