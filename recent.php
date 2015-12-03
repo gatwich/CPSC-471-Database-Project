@@ -53,6 +53,26 @@ $username = $_SESSION['username'];
         </ul>
       </div>
   </div>
-
+		 <?php
+		 echo "<div class=tableTitle>Recent Searches:</div>";
+		 $db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
+	
+	$recent = "SELECT Search FROM history WHERE User = '$username'";
+	$result=mysqli_query($db, $recent);
+			while($row=mysqli_fetch_array($result)){
+			$search = $row['Search'];
+			echo"<table cellspacing='0'>
+          <tbody>
+            <tr>
+              <td>$search</td>
+            
+            </tr>
+          </tbody>
+        </table>
+        ";
+		
+			
+			}
+		?>
   </body>
 </html>

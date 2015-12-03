@@ -5,7 +5,10 @@ if (isset($_POST['submit'])) { //user text is submitted
     /*echo "submitted";
     echo "<br>";*/
     	// Checkbox which checkbox is selected
-
+	 $name = $_POST['input'];
+	 $db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
+	 $recent = "INSERT INTO history (User, Search) VALUES ('$username', '$name')";
+	 $history = mysqli_query($db, $recent);
 	//if arena is selected
 	if(isset($_POST['arenaCheck'])){
 		/*echo "arenacheck";
