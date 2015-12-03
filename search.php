@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "<tr><td>" . $row["First Name"]. "</td><td>" . $row["Last Name"]."</td><td>" . $row["Team"]. "</td><td>" . $row["Goals"]. "</td><td>" . $row["Points"]. "</td>";
 		}
 		echo "</table>";
-		if (isset($_POST['fsubmit'])){
+		if (isset($_POST['fsubmit']) && !is_null($ID)){
 			 echo "1";
 			$query = "INSERT INTO favorite_players (User, pid) VALUES ('$username', '$ID')";
 			mysqli_query($db, $query);
@@ -162,6 +162,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "<table><tr><th>Name</th><th>Wins</th><th>Losses</th><th>Points</th><th>Games Played</th><th>Location</th><th>Division</th></tr>";
 
 		while($row=mysqli_fetch_array($result)){
+		$tname = $row["Name"];
 		echo "<tr><td>" . $row["Name"]. "</td><td>" . $row["Wins"]."</td><td>" . $row["Losses"]. "</td><td>" . $row["points"]. "</td><td>" . $row["Games Played"]. "</td><td>" . $row["Location"]. "</td><td>" . $row["Division"]. "</td></tr>";
 		}
 		echo "</table>";
@@ -188,9 +189,9 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "</table>";
 
 
-		if (isset($_POST['fsubmit'])){
+		if (isset($_POST['fsubmit']) && !is_null($tname)){
 			 echo "1";
-			$query = "INSERT INTO favorite_teams (User, Team) VALUES ('$username', '$name')";
+			$query = "INSERT INTO favorite_teams (User, Team) VALUES ('$username', '$tname')";
 			mysqli_query($db, $query);
 		
 			}
