@@ -101,10 +101,22 @@ if (isset($_POST['submit'])) { //user text is submitted
 			    $Losses=$row['Losses'];
 			    $points=$row['points'];
 		//-display  the result of the array
-		echo  "<ul>\n";
-		echo "Name = " . $Name . " Location = " . $Location . " Arena = "   .$Arena . " Games Played = "   .$GP . " Wins = "   .$Wins . " Losses = "   .$Losses . " Points = "   .$points;
-		echo  "</ul>";
+    echo"<table cellspacing='0'>
+           <thead>
+             <th>Name</th>
+             <th>Location</th>
+             <th>Arena</th>
+           </thead>
 
+          <tbody>
+            <tr>
+              <td>$Name</td>
+              <td>$Location</td>
+              <td>$Arena</td>
+            </tr>
+          </tbody>
+        </table>
+        ";
 		}
 		//}
 
@@ -114,7 +126,11 @@ if (isset($_POST['submit'])) { //user text is submitted
 else{
 
 	}
-
+  echo"
+  <input type='submit' name='submit' value='Favorite'>
+  <input type='submit' name='submit' value='Favorite'>
+  <input type='submit' name='submit' value='Favorite'>
+  ";
 
 }
 ?>
