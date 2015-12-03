@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		$arena="SELECT  Name, Capacity, Location FROM arena WHERE Name='" . $name ."'";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $arena);
+		$type = "arena";
 		/*echo "<strong>$arena. Arena</strong>";*/
 		echo "<table><tr><th>Name</th><th>Capacity</th><th>Location</th></tr>";
 
@@ -48,6 +49,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		$conference="SELECT Name, Location, Arena, `Games Played`, Wins, Losses, points FROM team WHERE Division IN (SELECT Name FROM division WHERE Conference ='".$name."'".")";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $conference);
+		$type = "conference";
 		/*echo "<strong>$name. Conference</strong>";*/
 		echo "<table><tr><th>Name</th><th>Location</th><th>Arena</th><th>Games Played</th><th>Wins</th><th>Losses</th><th>Points</th></tr>";
 
@@ -98,16 +100,23 @@ if (isset($_POST['submit'])) { //user text is submitted
 		//connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$players="SELECT `First Name`, `Last Name`, Team, Goals, Points FROM players  WHERE `First Name` = '" . $name ."'";
+		$players="SELECT `First Name`, `Last Name`, Team, Goals, Points, ID FROM players  WHERE `First Name` = '" . $name ."'";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $players);
 		/*echo "<strong>$name.</strong>";*/
 		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Team</th><th>Goals</th><th>Points</tr>";
 
 		while($row=mysqli_fetch_array($result)){
+		$ID= $row["ID"];
 		echo "<tr><td>" . $row["First Name"]. "</td><td>" . $row["Last Name"]."</td><td>" . $row["Team"]. "</td><td>" . $row["Goals"]. "</td><td>" . $row["Points"]. "</td>";
 		}
 		echo "</table>";
+		if (isset($_POST['fsubmit'])){
+			 echo "1";
+			$query = "INSERT INTO favorite_players (User, pid) VALUES ('$username', '$ID')";
+			mysqli_query($db, $query);
+		
+			}
 	}
 
 		//if Location is selected
@@ -177,16 +186,18 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "<tr><td>" . $row["First Name"]. "</td><td>" . $row["Last Name"]."</td><td>" . $row["Points"]. "</td><td>" . $row["Goals"]. "</td></tr>";
 		}
 		echo "</table>";
+
+
+		if (isset($_POST['fsubmit'])){
+			 echo "1";
+			$query = "INSERT INTO favorite_teams (User, Team) VALUES ('$username', '$name')";
+			mysqli_query($db, $query);
+		
+			}
 		}
 	else{
 
 		}
-
-	echo"
-	  <input type='submit' name='submit' value='Favorite'>
-	  <input type='submit' name='submit' value='Favorite'>
-	  <input type='submit' name='submit' value='Favorite'>
-	  ";
 
 }
 ?>

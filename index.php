@@ -65,9 +65,11 @@ $username = $_SESSION['username'];
             <li><input type="checkbox" name="locationCheck" value="yes"> Location</li>
 	          <li><input type="checkbox" name="playersCheck" value="yes"> Players</li>
 	          <li><input type="checkbox" name="teamCheck" value="yes"> Team</li>
+		 <li><input type="checkbox" name="fsubmit" value="favorite">favorite?</li>
           </ul>
           <input type="search" placeholder="Search" name="input">
           <input type="submit" name="submit" value="search">
+	  
         </div>
       </div>
       </form>

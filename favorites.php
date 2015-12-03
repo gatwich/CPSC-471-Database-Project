@@ -55,67 +55,35 @@ $username = $_SESSION['username'];
   </div>
 <?php
   echo "<div class=tableTitle>Favorite Teams</div>";
-
-    echo "
-    <table cellspacing='0'>
-    <thead>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Arena</th>
-      <th>Games Played</th>
-      <th>Wins</th>
-      <th>Losses</th>
-      <th>Points</th>
-    </thead>
-    </table>
-    ";
 	//require("db_connect.php");
 	$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
-	
-	$favteams = "SELECT Team FROM favorite_teams WHERE User = '$username'";
+		//-query  the database table
+		$arena="SELECT User, Team FROM favorite_teams WHERE User= '$username'";
 		//-run  the query against the mysql query function
-		$result=mysqli_query($db, $favteams);
-			while($row=mysqli_fetch_array($result)){
-				$Team = $row['Team'];
-				$teams="SELECT Name, Location, Arena, 'Games Played', Wins, Losses, points FROM team  WHERE Name = '$Team' ";
-				$result2=mysqli_query($db, $teams);
-				while($row2=mysqli_fetch_array($result2)){
-				//$row=mysqli_fetch_array($result);
-			    $Name  =$row2['Name'];
-			    $Location=$row2['Location'];
-			    $Arena=$row2['Arena'];
-			    $GP=$row2['Games Played'];
-			    $Wins=$row2['Wins'];
-			   $Losses=$row2['Losses'];
-			   $points=$row2['points'];
-		//-display  the result of the array
-    echo"<table cellspacing='0'>
-          <tbody>
-            <tr>
-              <td>$Name</td>
-              <td>$Location</td>
-              <td>$Arena</td>
-              <td>$GP</td>
-              <td>$Wins</td>
-              <td>$Losses</td>
-              <td>$points</td>
-            </tr>
-          </tbody>
-        </table>
-        ";
+		$result=mysqli_query($db, $arena);
+		/*echo "<strong>$arena. Arena</strong>";*/
+		echo "<table><tr><th>User</th><th>Team</th>";
+
+		while($row=mysqli_fetch_array($result)){
+		echo "<tr><td>" . $row["User"]. "</td><td>" . $row["Team"]."</td>";
 		}
-			}
-		$favplayers = "SELECT pid FROM favorite_players WHERE User = '$username'";	
-		  echo "<div class=tableTitle>Favorite Players</div>";
+		echo "</table>";
+  ?>
+
+<?php
+  echo "<div class=tableTitle>Favorite Players</div>";
+	//require("db_connect.php");
+	$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
+		//-query  the database table
+		$arena="SELECT `First Name`, `Last Name`, Team, Goals, Points, ID FROM players WHERE ID IN (SELECT pid FROM favorite_players WHERE User ='".$username."'".")";
+		//-run  the query against the mysql query function
+		$result=mysqli_query($db, $arena);
+		/*echo "<strong>$arena. Arena</strong>";*/
 		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Team</th><th>Goals</th><th>Points</tr>";
-		$presult=mysqli_query($db, $favplayers);
-		while($prow=mysqli_fetch_array($presult)){
-			$pid = $prow['pid'];
-			$players="SELECT `First Name`, `Last Name`, Team, Goals, Points FROM players  WHERE ID = '$pid'";
-			$presult2=mysqli_query($db, $players);
-			while($prow2=mysqli_fetch_array($presult2)){
-		echo "<tr><td>" . $prow2["First Name"]. "</td><td>" . $prow2["Last Name"]."</td><td>" . $prow2["Team"]. "</td><td>" . $prow2["Goals"]. "</td><td>" . $prow2["Points"]. "</td>";
-			}
+
+		while($row=mysqli_fetch_array($result)){
+		$ID= $row["ID"];
+		echo "<tr><td>" . $row["First Name"]. "</td><td>" . $row["Last Name"]."</td><td>" . $row["Team"]. "</td><td>" . $row["Goals"]. "</td><td>" . $row["Points"]. "</td>";
 		}
 		echo "</table>";
   ?>
