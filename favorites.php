@@ -105,6 +105,19 @@ $username = $_SESSION['username'];
         ";
 		}
 			}
+		$favplayers = "SELECT pid FROM favorite_players WHERE User = '$username'";	
+		  echo "<div class=tableTitle>Favorite Players</div>";
+		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Team</th><th>Goals</th><th>Points</tr>";
+		$presult=mysqli_query($db, $favplayers);
+		while($prow=mysqli_fetch_array($presult)){
+			$pid = $prow['pid'];
+			$players="SELECT `First Name`, `Last Name`, Team, Goals, Points FROM players  WHERE ID = '$pid'";
+			$presult2=mysqli_query($db, $players);
+			while($prow2=mysqli_fetch_array($presult2)){
+		echo "<tr><td>" . $prow2["First Name"]. "</td><td>" . $prow2["Last Name"]."</td><td>" . $prow2["Team"]. "</td><td>" . $prow2["Goals"]. "</td><td>" . $prow2["Points"]. "</td>";
+			}
+		}
+		echo "</table>";
   ?>
   
   </body>
