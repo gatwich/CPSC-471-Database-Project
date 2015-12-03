@@ -154,22 +154,26 @@ if (isset($_POST['submit'])) { //user text is submitted
 				$Points=$row['Points'];
 				//$Location=$row[''];
 		//-display  the result of the array
-		echo  "<ul>\n";
-		echo  "<li>" . "<a  href=\"$Name".".php\">".$Name."</a></li>\n";
-		echo "<br>";
-		echo "First Name = " . $FirstName;
-		echo "<br>";
-		echo "Last Name = "   .$LastName;
-		
-		echo "<br>";
-		echo "Team = "   .$Team;
-	
-		echo "<br>";
-		echo "Goals = "   .$Goals;
-		
-		echo "<br>";
-		echo "Points = "   .$Points;
-		echo  "</ul>";
+		echo"<table cellspacing='0'>
+           <thead>
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>Team</th>
+	     <th>Goals</th>
+	     <th>Points</th>
+           </thead>
+
+          <tbody>
+            <tr>
+              <td>$FirstName</td>
+              <td>$LastName</td>
+              <td>$Team</td>
+	      <td>$Goals</td>
+	      <td>$Points</td>
+            </tr>
+          </tbody>
+        </table>
+        ";
 		
 		
 		
@@ -197,15 +201,22 @@ if (isset($_POST['submit'])) { //user text is submitted
 		   $StateProvince=$row['State/Province'];
 		   $Country=$row['Country'];
 		//-display  the result of the array
-		echo  "<ul>\n";
-		echo  "<li>" . "<a  href=\"$Name".".php\">".$Name."</a></li>\n";
-		echo "<br>";
-		echo "city = " . $City;
-		echo "<br>";
-		echo "state/province = "   .$StateProvince;
-		echo "<br>";
-		echo "Country = " . $Country;
-		echo  "</ul>";
+		echo"<table cellspacing='0'>
+           <thead>
+             <th>City</th>
+             <th>StateProvince</th>
+             <th>Country</th>
+           </thead>
+
+          <tbody>
+            <tr>
+              <td>$City</td>
+              <td>$StateProvince</td>
+              <td>$Country</td>
+            </tr>
+          </tbody>
+        </table>
+        ";
 		}
 		//}
 	} 
