@@ -60,18 +60,24 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$conference="SELECT Name FROM team WHERE Division = SELECT Name FROM division WHERE Conference ='" . $name ."'";
+		$conference="SELECT Name, Location, Arena, 'Games Played', Wins, Losses, points FROM team WHERE Division IN (SELECT Name FROM division WHERE Conference ='".$name."'".")";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $conference);
+		echo $name . " Conference";
 		while($row=mysqli_fetch_array($result)){
 			    $Name  =$row['Name'];
+			    $Location=$row['Location'];
+			    $Arena=$row['Arena'];
+			    $GP=$row['Games Played'];
+			    $Wins=$row['Wins'];
+			    $Losses=$row['Losses'];
+			    $points=$row['points'];
 		//-display  the result of the array
 		echo  "<ul>\n";
-		echo  "<li>" . "<a  href=\"$Name".".php\">"   .$Name .  "</a></li>\n";
+		echo "Name = " . $Name . " Location = " . $Location . " Arena = "   .$Arena . " Games Played = "   .$GP . " Wins = "   .$Wins . " Losses = "   .$Losses . " Points = "   .$points;
 		echo  "</ul>";
 
 		}
-		//}
 	}
 
 
@@ -123,14 +129,88 @@ if (isset($_POST['submit'])) { //user text is submitted
 
 	}
 
+	//if players is selected
+	else if(isset($_POST['playersCheck'])){ 
+		//echo "<strong>acheck</strong>";
+		echo "<br>";
+		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){ 
+	 	$name = $_POST['input']; 
+		echo "<strong>$name</strong>";
+		echo "<br>";
+		echo "<br>";
+		//connect  to the database
+		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
+		//-query  the database table
+		$players="SELECT 'First Name', 'Last Name', Team, Goals, Points FROM players  WHERE `First Name` = '" . $name ."'";
+		//-run  the query against the mysql query function
+		$result=mysqli_query($db, $players);
+		while($row=mysqli_fetch_array($result)){
+			   $FirstName =$row['First Name'];
+			   $LastName=$row['Last Name'];
+			   $Team=$row['Team'];
+				$Goals=$row['Goals'];
+				$Points=$row['Points'];
+				//$Location=$row[''];
+		//-display  the result of the array
+		echo  "<ul>\n";
+		echo  "<li>" . "<a  href=\"$Name".".php\">".$Name."</a></li>\n";
+		echo "<br>";
+		echo "First Name = " . $FirstName;
+		echo "<br>";
+		echo "Last Name = "   .$LastName;
+		
+		echo "<br>";
+		echo "Team = "   .$Team;
+	
+		echo "<br>";
+		echo "Goals = "   .$Goals;
+		
+		echo "<br>";
+		echo "Points = "   .$Points;
+		echo  "</ul>";
+		
+		
+		
+		}
+		//}
+	}
+
+		//if Location is selected
+	else if(isset($_POST['locationCheck'])){
+		echo "<strong>locationcheck</strong>";
+		echo "<br>";
+		//if(preg_match("^/[A-Za-z]+/", $_POST['input'])){
+		  $name = $_POST['input'];
+		echo "<strong>$name</strong>";
+		echo "<br>";
+		echo "<br>";
+		//connect  to the database
+		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
+		//-query  the database table
+		$location="SELECT * FROM location WHERE City='" . $name ."'";
+		//-run  the query against the mysql query function
+		$result=mysqli_query($db, $location);
+		while($row=mysqli_fetch_array($result)){
+		   $City=$row['City'];
+		   $StateProvince=$row['State/Province'];
+		   $Country=$row['Country'];
+		//-display  the result of the array
+		echo  "<ul>\n";
+		echo  "<li>" . "<a  href=\"$Name".".php\">".$Name."</a></li>\n";
+		echo "<br>";
+		echo "city = " . $City;
+		echo "<br>";
+		echo "state/province = "   .$StateProvince;
+		echo "<br>";
+		echo "Country = " . $Country;
+		echo  "</ul>";
+		}
+		//}
+	} 
+
 else{
 
 	}
-  echo"
-  <input type='submit' name='submit' value='Favorite'>
-  <input type='submit' name='submit' value='Favorite'>
-  <input type='submit' name='submit' value='Favorite'>
-  ";
-
+ 
 }
 ?>
