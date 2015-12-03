@@ -60,7 +60,6 @@ $username = $_SESSION['username'];
           <p> SEARCH </p>
           <ul class="checkbox">
             <li><input type="checkbox" name="arenaCheck" value="yes"> Arena</li>
-            <li><input type="checkbox" name="coachCheck" value="yes"> Coach</li>
             <li><input type="checkbox" name="conferenceCheck" value="yes"> Conference</li>
             <li><input type="checkbox" name="divisionCheck" value="yes"> Division</li>
             <li><input type="checkbox" name="locationCheck" value="yes"> Location</li>

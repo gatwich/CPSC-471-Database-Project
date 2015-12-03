@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		$arena="SELECT  Name, Capacity, Location FROM arena WHERE Name='" . $name ."'";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $arena);
-		echo "<strong>$arena. Arena</strong>";
+		//echo "<strong>$arena Arena</strong>";
 		echo "<table><tr><th>Name</th><th>Capacity</th><th>Location</th></tr>";
 
 		while($row=mysqli_fetch_array($result)){
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		$conference="SELECT Name, Location, Arena, `Games Played`, Wins, Losses, points FROM team WHERE Division IN (SELECT Name FROM division WHERE Conference ='".$name."'".")";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $conference);
-		echo "<strong>$name. Conference</strong>";
+		//echo "<strong>$name. Conference</strong>";
 		echo "<table><tr><th>Name</th><th>Location</th><th>Arena</th><th>Games Played</th><th>Wins</th><th>Losses</th><th>Points</th></tr>";
 
 		while($row=mysqli_fetch_array($result)){
@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		$players="SELECT `First Name`, `Last Name`, Team, Goals, Points FROM players  WHERE `First Name` = '" . $name ."'";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $players);
-		echo "<strong>$name.</strong>";
+		//echo "<strong>$name.</strong>";
 		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Team</th><th>Goals</th><th>Points</tr>";
 
 		while($row=mysqli_fetch_array($result)){
@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $location);
 		
-		echo "<strong>$name.</strong>";
+		//echo "<strong>$name</strong>";
 		echo "<table><tr><th>City</th><th>State/Province</th><th>Country</tr>";
 
 		while($row=mysqli_fetch_array($result)){
@@ -157,7 +157,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 
 
 		//display Coach
-		echo "<strong>Coach</strong>";
+		//echo "<strong>Coach</strong>";
 		echo "<table><tr><th>Coach Name</th></tr>";
 
 		while($row=mysqli_fetch_array($result2)){
@@ -167,7 +167,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "<br>";
 
 		//display players
-		echo "<strong>Players</strong>";
+		//echo "<strong>Players</strong>";
 		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Points</th><th>Goals</th></tr>";
 
 		while($row=mysqli_fetch_array($result3)){
