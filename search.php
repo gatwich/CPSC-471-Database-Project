@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$conference="SELECT Name, Location, Arena, 'Games Played', Wins, Losses, points FROM team WHERE Division IN (SELECT Name FROM division WHERE Conference ='".$name."'".")";
+		$conference="SELECT Name, Location, Arena, `Games Played`, Wins, Losses, points FROM team WHERE Division IN (SELECT Name FROM division WHERE Conference ='".$name."'".")";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $conference);
 		echo $name . " Conference";
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		 //connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$division="SELECT Name, Location, Arena, 'Games Played', Wins, Losses, points FROM team WHERE Division = '" . $name ."'";
+		$division="SELECT Name, Location, Arena, `Games Played`, Wins, Losses, points FROM team WHERE Division = '" . $name ."'";
 
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $division);
@@ -112,6 +112,7 @@ if (isset($_POST['submit'])) { //user text is submitted
              <th>Name</th>
              <th>Location</th>
              <th>Arena</th>
+	     <th>Games Played</th>
            </thead>
 
           <tbody>
@@ -119,6 +120,7 @@ if (isset($_POST['submit'])) { //user text is submitted
               <td>$Name</td>
               <td>$Location</td>
               <td>$Arena</td>
+	      <td>$GP</td>
             </tr>
           </tbody>
         </table>
@@ -141,7 +143,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		//connect  to the database
 		$db=mysqli_connect  ("localhost", "root",  "admin", "nhl") or die ('I cannot connect to the database  because: ' . mysql_error());
 		//-query  the database table
-		$players="SELECT 'First Name', 'Last Name', Team, Goals, Points FROM players  WHERE `First Name` = '" . $name ."'";
+		$players="SELECT `First Name`, `Last Name`, Team, Goals, Points FROM players  WHERE `First Name` = '" . $name ."'";
 		//-run  the query against the mysql query function
 		$result=mysqli_query($db, $players);
 		while($row=mysqli_fetch_array($result)){
@@ -211,6 +213,12 @@ if (isset($_POST['submit'])) { //user text is submitted
 else{
 
 	}
+
+	echo"
+	  <input type='submit' name='submit' value='Favorite'>
+	  <input type='submit' name='submit' value='Favorite'>
+	  <input type='submit' name='submit' value='Favorite'>
+	  ";
  
 }
 ?>
