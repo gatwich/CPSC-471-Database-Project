@@ -54,6 +54,21 @@ fieldset { padding:0px; }
 	border-right: 1px solid rgba(88,88,88,0.4);
 }
 
+.newHeader ul{
+	background-color: black;
+	padding: 10px;
+	color: #505050;
+	font-size: 20px;
+	list-style-type: none;
+	text-align: right;
+}
+.newHeader p {
+	display:inline;
+}
+.newHeader p[class="username"]{
+	color: white;
+}
+
 body {
   /*background: url("http://pre00.deviantart.net/ebd2/th/pre/f/2008/290/e/2/nhl_wallpaper_by_sim25_design.jpg");*/
 	background-size: cover;
