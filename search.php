@@ -170,7 +170,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 
 
 		//display Coach
-		echo "<strong>Coach</strong>";
+		
 		echo "<table><tr><th>Coach Name</th></tr>";
 
 		while($row=mysqli_fetch_array($result2)){
@@ -180,7 +180,7 @@ if (isset($_POST['submit'])) { //user text is submitted
 		echo "<br>";
 
 		//display players
-		echo "<strong>Players</strong>";
+		
 		echo "<table><tr><th>First Name</th><th>Last Name</th><th>Points</th><th>Goals</th></tr>";
 
 		while($row=mysqli_fetch_array($result3)){
